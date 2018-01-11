@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
-import { Router } from 'react-router';
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+// Components
 import ChartSandbox from './ChartSandbox';
 import Charts from './Charts';
+import SimpleNav from './SimpleNav';
+import PageNotFound from './PageNotFound';
 
 export default class Routes extends Component {
   render() {
-    return
-    <Router history=''>
-      <Switch>
-        <Route path="/chartsandbox" component={ChartSandbox} />
-        <Route path="/" component={Charts} />
-      </Switch>
-    </Router>
+    //console.log(ChartSandbox, PageNotFound, Router, Route)
+    return (
+      <Router>
+        <div>
+          <SimpleNav />
+          <Switch>
+            <Route path='/chartsandbox' component={ChartSandbox} />
+            <Route path='/' component={Charts} />
+            <Route component={PageNotFound} />
+          </Switch>
+        </div>
+      </Router>
+    );
   }
 }
