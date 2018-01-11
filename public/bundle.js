@@ -23456,7 +23456,7 @@ exports = module.exports = __webpack_require__(78)(false);
 
 
 // module
-exports.push([module.i, "body {\n  background: #000; }\n", ""]);
+exports.push([module.i, "body {\n  background: #000; }\n\n.flex-row {\n  justify-content: space-evenly; }\n", ""]);
 
 // exports
 

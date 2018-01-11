@@ -1,3 +1,11 @@
-body {
-  background: #000;
+.flex-row {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem 0 1rem 0;
+  width: 100%;
+}
+
+.navbar {
+  background: grey;
+  padding: 0;
 }
