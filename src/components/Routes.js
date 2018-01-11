@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import '../css/index.scss';
+
 // Components
 import ChartSandbox from './ChartSandbox';
 import Charts from './Charts';
