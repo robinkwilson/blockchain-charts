@@ -5,7 +5,8 @@ async function fetchBitcoinData() {
       console.error('Could not fetch data');
       return null;
     });
-  return data;
+  console.log(data);
+  return data.market_price_usd;
 }
 
 export default {

@@ -33149,9 +33149,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _chartsapi = __webpack_require__(413);
 
-var _chartsapi2 = _interopRequireDefault(_chartsapi);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -33175,15 +33175,47 @@ var PopStatList = function (_Component) {
 
   _createClass(PopStatList, [{
     key: 'componentDidMount',
-    value: function componentDidMount() {
-      // const {} = bitcoinData();
-      var data = (0, _chartsapi2.default)();
-      this.setState({ data: data });
-    }
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        var _this2 = this;
+
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                // const {} = bitcoinData();
+                // console.log(bitcoinData);
+                // const data = await bitcoinData();
+                // this.setState({ data });
+
+                fetch('https://api.blockchain.info/stats', {
+                  mode: 'no-cors'
+                }).then(function (res) {
+                  console.log(res.json);
+                  console.log(res);
+                  return res.json();
+                }).then(function (data) {
+                  return _this2.setState({ data: data });
+                });
+
+              case 1:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function componentDidMount() {
+        return _ref.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
   }, {
     key: 'render',
     value: function render() {
-      console.log(data);
+      console.log(this.state.data);
       return _react2.default.createElement(
         'div',
         null,
@@ -33243,9 +33275,11 @@ var fetchBitcoinData = function () {
 
           case 2:
             data = _context.sent;
-            return _context.abrupt('return', data);
 
-          case 4:
+            console.log(data);
+            return _context.abrupt('return', data.market_price_usd);
+
+          case 5:
           case 'end':
             return _context.stop();
         }
