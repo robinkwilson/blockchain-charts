@@ -3,9 +3,22 @@
   justify-content: space-evenly;
   padding: 1rem 0 1rem 0;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .navbar {
   background: grey;
   padding: 0;
+
+  button {
+    background: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 0;
+  }
+
+  button:hover {
+    background: black;
+  }
 }
+

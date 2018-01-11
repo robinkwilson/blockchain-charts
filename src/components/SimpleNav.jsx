@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import { Button } from './common';
+
 export default class SimpleNav extends Component {
   render() {
+    console.log(Button);
     return (
       <div className="navbar">
         <div className="container">
           <div className="flex-row">
-            <Link to='/'><button className='btn'>Charts</button></Link>
-            <Link to='/chartsandbox'><button className='btn'>Chart Sandbox</button></Link>
+            <Button linkto={'/'} classes={'btn'} txt={'Charts'} />
+            <Button linkto={'/chartsandbox'} classes={'btn'} txt={'Chart Sandbox'} />
           </div>
         </div>
       </div>);
