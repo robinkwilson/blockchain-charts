@@ -33177,28 +33177,23 @@ var PopStatList = function (_Component) {
     key: 'componentDidMount',
     value: function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var _this2 = this;
-
+        var data;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // const {} = bitcoinData();
-                // console.log(bitcoinData);
-                // const data = await bitcoinData();
-                // this.setState({ data });
+                //const {} = bitcoinData();
+                //console.log(bitcoinData);
+                console.log(_chartsapi.fetchBitcoinData);
+                _context.next = 3;
+                return (0, _chartsapi.fetchBitcoinData)();
 
-                fetch('https://api.blockchain.info/stats', {
-                  mode: 'no-cors'
-                }).then(function (res) {
-                  console.log(res.json);
-                  console.log(res);
-                  return res.json();
-                }).then(function (data) {
-                  return _this2.setState({ data: data });
-                });
+              case 3:
+                data = _context.sent;
 
-              case 1:
+                this.setState({ data: data });
+
+              case 5:
               case 'end':
                 return _context.stop();
             }
@@ -33260,26 +33255,18 @@ Object.defineProperty(exports, "__esModule", {
 
 var fetchBitcoinData = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var data;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return fetch('https://api.blockchain.info/stats').then(function (resp) {
-              return resp.json();
+            return _context.abrupt('return', fetch('https://gentle-mesa-19770.herokuapp.com/https://api.blockchain.info/stats').then(function (res) {
+              return res.json();
             }).catch(function (err) {
               console.error('Could not fetch data');
               return null;
-            });
+            }));
 
-          case 2:
-            data = _context.sent;
-
-            console.log(data);
-            return _context.abrupt('return', data.market_price_usd);
-
-          case 5:
+          case 1:
           case 'end':
             return _context.stop();
         }
