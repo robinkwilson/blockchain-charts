@@ -5,7 +5,6 @@ import { Button } from './common';
 
 export default class SimpleNav extends Component {
   render() {
-    console.log(Button);
     return (
       <div className="navbar">
         <div className="container">
