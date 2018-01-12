@@ -1,6 +1,75 @@
 import React, { Component } from 'react';
 
-import { fetchBitcoinData, fetchWalletData } from '../../../utils/chartsapi.js';
+import { fetchBitcoinData, fetchChartData } from '../../../utils/chartsapi.js';
+import PopStat from './PopStat.jsx';
+
+
+export default class PopStatList extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      stats: null,
+      popularStats: {},
+    }
+  }
+
+  async componentDidMount() {
+    
+    const statTemp = {};
+
+    // printedStats.map(stat => {
+    //   // for stats query
+    //   if (stat.query.dataType === 'stat' && Object.keys(statTemp).length === 0) {
+    //       fetchBitcoinData()
+    //       .then(stats => {
+    //         statTemp = stats;
+    //         this.setState({ stats, popStats: this.state.popStats[stat.query.propName]  });
+    //       })
+    //     }
+    //   } 
+    //   // for chart query, could be an expensive timing wise data call(s)
+    //   else if (stat.query.dataType === 'chart') { 
+    //     fetchChartData(stat.query.propName, stat.query.queryTxt)
+    //     .then(stats => {
+    //       this.set
+    //     })
+    //   }
+    // })
+
+    fetchBitcoinData()
+      .then(stats => this.setState({ stats }));
+
+    fetchChartData()
+      .then(BCWallets => this.setState({ BCWallets }));
+
+    // fetch('https://gentle-mesa-19770.herokuapp.com/https://api.blockchain.info/stats')
+    //   .then(res => res.json())
+    //   .then(data => this.setState({ data }))
+
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="col-md-12 padding-1">
+          <h2>Popular Statistics</h2>
+          <p className="text-center">The most trusted source for data on the bitcoin blockchain.</p>
+
+          <div className="stickyMenu"></div>
+
+          <div className="padding-1 pop-stat-container">
+            <PopStat />
+            <PopStat />
+            <PopStat />
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
 
 const helpers = {
   calculateSubtext:
@@ -9,7 +78,7 @@ const helpers = {
     },
   calculatePerUnit:
     function (stat, perUnit) {
-      return stat/perUnit;
+      return stat / perUnit;
     }
 }
 
@@ -39,48 +108,8 @@ const printedStats = [
     statUnit: 'users',
     query: {
       dataType: 'chart', // stat => blockchain.info/stats || chart => blockchain.info/charts + query data
-      propName: 'my-wallet-n-users'
+      propName: 'my-wallet-n-users',
+      queryTxt: '?timespan=1weeks&format=json'
     }
   }
 ]
-
-export default class PopStatList extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      stats: null,
-      BTCWallets: null,
-    }
-  }
-
-  async componentDidMount() {
-    console.log(fetchBitcoinData);
-
-    fetchBitcoinData()
-      .then(stats => this.setState({ stats }));
-
-    fetchWalletData()
-      .then(BCWallets => this.setState({ BCWallets }));
-
-    // fetch('https://gentle-mesa-19770.herokuapp.com/https://api.blockchain.info/stats')
-    //   .then(res => res.json())
-    //   .then(data => this.setState({ data }))
-
-  }
-
-  render() {
-    return (
-      <div className="col-12">
-        <h2>Popular Statistics</h2>
-        <p className="text-center">The most trusted source for data on the bitcoin blockchain.</p>
-        {
-          this.state.data
-            ? <p>We have data</p>
-            : <p>We have no data :(</p>
-        }
-      </div>
-    );
-  }
-}
