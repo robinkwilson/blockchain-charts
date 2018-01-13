@@ -8,7 +8,7 @@ export default class SimpleNav extends Component {
     return (
       <div className="navbar">
         <div className="container">
-          <div className="flex-row">
+          <div className="flex-row padding-1">
             <Button linkto={'/'} classes={'btn'} txt={'Charts'} />
             <Button linkto={'/chartsandbox'} classes={'btn'} txt={'Chart Sandbox'} />
           </div>

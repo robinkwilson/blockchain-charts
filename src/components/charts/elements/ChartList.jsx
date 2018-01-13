@@ -17,13 +17,19 @@ export default class ChartList extends Component {
           charts: [
             // properties for each chart obj: title, sub, link, filters
             // link text is used in the chart page link and image name
-            { title: 'Number of Bitcoins in Circulation', sub: '#(Total BTC) x Time', link: 'total-bitcoins', filters: ['BTC', '#(Total BTC)', 'Time'] },
-            { title: 'BTC Market Price (USD)', sub: 'USD(1 BTC) x Time', link: 'market-price', filters: ['BTC', 'USD(1 BTC)', 'Time', '1 BTC'] },
-            { title: 'USD of BTC in Circulation', sub: 'USD(Total BTC) x Time,', link: 'market-cap', filters: ['BTC', 'USD(Total BTC)', 'Time'] },
+            { title: 'Number of Bitcoins in Circulation', sub: '#(Total BTC) x Time', link: 'total-bitcoins', filters: ['BTC', 'Total BTC', '#', 'Time'] },
+            { title: 'BTC Market Price (USD)', sub: 'USD(1 BTC) x Time', link: 'market-price', filters: ['BTC', 'USD', 'Time', 'Per BTC'] },
+            { title: 'USD of BTC in Circulation', sub: 'USD(Total BTC) x Time,', link: 'market-cap', filters: ['BTC', 'Total BTC', 'USD', 'Time'] },
           ]
         },
         block_details: {
-          charts: []
+          charts: [
+            { title: 'Blockchain Size (MB)', sub: 'MB(Total Blocks) x Time', link: 'blocks-size', filters: ['MB', 'Time', 'Total Blocks', 'Block'] }, 
+            { title: 'Average Block Size (MB)', sub: 'MB(1 Block) x Time', link: 'avg-block-size', filters: ['MB', 'Time', 'Per Block', 'Block'] },
+            { title: 'Number of Orphaned Blocks', sub: '#(Total Blocks) x Time', link: 'n-orphaned-blocks', filters: ['#(Total Blocks)', '#', 'Block', 'Time'] },
+            { title: 'Transactions per Block', sub: 'Avg #(Transactions/Block) x Time', link: 'n-transactions-per-block', filters: ['Avg', 'Transactions/Block', 'Per Block', '#', 'Time'] },
+            { title: 'Median Transaction Confirmation Time (with fee)', sub: 'Avg(Time) x Time', link: 'median-confirmation-time', filters: ['Avg', 'Time'] },
+          ]
         },
         mining_information: {
           charts: []
@@ -70,13 +76,13 @@ export default class ChartList extends Component {
     const categories = Object.keys(chartLists); 
     return (
       <div>
-        <div style={{ backgroundColor: '#392' }}>
+        <div className="bg-darker-blue padding-1">
           <h2>Filters</h2>
-          <div className='flex-row'>
+          <div className='flex-row container'>
             {
               filters && filters.map((cur, id) => {
                 return (
-                  <button key={id} type="button" onClick={this.toggleFilter.bind(this, id)} className={cur.active ? "btn btn-primary focus active" : "btn btn-primary"} data-toggle="button" aria-pressed="false" autoComplete="off">
+                  <button key={id} type="button" onClick={this.toggleFilter.bind(this, id)} className={cur.active ? "btn btn-filter focus active" : "btn btn-filter"} data-toggle="button" aria-pressed="false" autoComplete="off">
                     {cur.text}
                   </button>
                 );
@@ -87,9 +93,9 @@ export default class ChartList extends Component {
         {
           categories && categories.map((category, id) => {
             return (
-              <div key={id} className="padding-1 pop-stat-container">
+              <div key={id} className="padding-1">
                 <h2>{`${categoryToTitle(category)}`}</h2>
-                <div className='flex-row'>
+                <div className='flex-row container pop-stat-container'>
                   {
                     chartLists[category].charts && chartLists[category].charts.filter(chart => hasFilters(chart, activeFilters)).map((chart, id) => {
                       return <Chart key={id} chart={chart} />;
@@ -106,7 +112,7 @@ export default class ChartList extends Component {
 }
 
 // List of possible filters for buttons
-const filterList = ['BTC', '#(Total BTC)', 'Time', '1 BTC', 'Total BTC', 'USD(Total BTC)']
+const filterList = ['BTC', 'USD', 'Avg', '#', 'MB', 'Time', 'Per BTC', 'Total BTC', 'Total Blocks', 'Per Block', 'Block']
 const filters = filterList.map(filterName => {
   return {
     text: filterName,
