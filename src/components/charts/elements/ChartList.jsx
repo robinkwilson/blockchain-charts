@@ -3,8 +3,6 @@ import _ from 'lodash';
 
 import Chart from './Chart.jsx';
 
-
-
 export default class ChartList extends Component {
   
   constructor(props) {
@@ -61,7 +59,7 @@ export default class ChartList extends Component {
       this.setState({ activeFilters: active.filter(item => item.text !== cur_text) })
     }
     
-    // inside filters array toggle 'active' property
+    // inside state filters array toggle 'active' property
     cur.active = !cur_isActive;
     filters.splice(cur_id, 1, cur);
     this.setState({ filters: filters });
@@ -86,7 +84,6 @@ export default class ChartList extends Component {
             }
           </div>
         </div>
-
         {
           categories && categories.map((category, id) => {
             return (
@@ -131,4 +128,3 @@ function hasFilters(chart, activeFilters) {
   else if (chart.filters) return _.difference(active, chart.filters).length === 0;
   else return false;
 }
-// 

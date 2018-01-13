@@ -11,11 +11,11 @@ export default class Charts extends Component {
           <h2>Blockchain Charts</h2>
         </div>
         <p className="text-center">The most trusted source for data on the bitcoin blockchain.</p>
-
         <div className="sticky-menu"></div>
 
         <PopStatList />
         <ChartList />
+        
       </div>
     );
   }
