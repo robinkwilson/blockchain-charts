@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 import Chart from './Chart.jsx';
+import _ from 'lodash';
 
-const filterList = ['#(Total BTC)', 'Time', '1 BTC', 'Total BTC', 'USD(Total BTC)']
+const filterList = ['BTC', '#(Total BTC)', 'Time', '1 BTC', 'Total BTC', 'USD(Total BTC)']
 const filters = filterList.map(filterName => {
   return {
     text: filterName,
@@ -10,17 +11,17 @@ const filters = filterList.map(filterName => {
   }
 })
 
-function underscoreCategoryToCamelCaseTitle(name) {
-  return name.split('_').map((str) => str.charAt(0).toUpperCase()).join(' ');
+function categoryToTitle(name) {
+  return name.split('_').map(str => str[0].toUpperCase() + str.slice(1)).join(' '); //
 }
 
+// true if all activeFilters elements are contained inside chart.filters
+// true if activeFilters is empty 
 function hasFilters(chart, activeFilters) {
-  if (chart.filters){
-    return chart.filters.filter( () => {
-      
-    })
-  } 
-  return false;
+  let active = activeFilters.map(filter => filter.text);
+  if (activeFilters.length === 0) return true;
+  else if (chart.filters) return _.difference(active, chart.filters).length === 0;
+  else return false;
 }
 
 export default class ChartList extends Component {
@@ -34,22 +35,22 @@ export default class ChartList extends Component {
       chartLists: {
         currency_statistics: {
           charts: [
-            { title: 'Number of Bitcoins in Circulation', sub: '#(Total BTC) x Time', link: 'total-bitcoins', filters: ['#(Total BTC)', 'Time'] },
-            { title: 'BTC Market Price (USD)', sub: 'USD(1 BTC) x Time', link: 'market-price', filters: ['USD(1 BTC)', 'Time'] },
-            { title: 'USD of BTC in Circulation', sub: 'USD(Total BTC) x Time,', link: 'market-cap', filters: ['USD(Total BTC)', 'Time'] },
+            { title: 'Number of Bitcoins in Circulation', sub: '#(Total BTC) x Time', link: 'total-bitcoins', filters: ['BTC', '#(Total BTC)', 'Time'] },
+            { title: 'BTC Market Price (USD)', sub: 'USD(1 BTC) x Time', link: 'market-price', filters: ['BTC', 'USD(1 BTC)', 'Time', '1 BTC'] },
+            { title: 'USD of BTC in Circulation', sub: 'USD(Total BTC) x Time,', link: 'market-cap', filters: ['BTC', 'USD(Total BTC)', 'Time'] },
           ]
         },
         block_details: {
-
+          charts: []
         },
         mining_information: {
-
+          charts: []
         },
         network_activity: {
-
+          charts: []
         },
         blockchain_wallet_activity: {
-
+          charts: []
         }
       }
     }
@@ -81,13 +82,18 @@ export default class ChartList extends Component {
   }
 
   render() {
-    const chartLists = this.state;
+    const { chartLists, activeFilters, filters } = this.state;
+    const categories = Object.keys(chartLists);
+    console.log(categories);
+    console.log(chartLists);
+    console.log(chartLists[categories[0]].charts[0]);
+
     return (
       <div>
         <div style={{ backgroundColor: '#392' }}>
           <h2>Filters</h2>
           {
-            this.state.filters && this.state.filters.map((cur, id) => {
+            filters && filters.map((cur, id) => {
               return (
                 <button key={id} type="button" onClick={this.toggleFilter.bind(this, id)} className={cur.active ? "btn btn-primary focus active" : "btn btn-primary"} data-toggle="button" aria-pressed="false" autoComplete="off">
                   {cur.text}
@@ -98,25 +104,23 @@ export default class ChartList extends Component {
         </div>
 
         {
-          chartLists && chartLists.map(category => {
+          categories && categories.map((category,id) => {
             return (
-              <div className="padding-1 pop-stat-container">
-                <h2>{`${underscoreCategoryToCamelCaseTitle(category)}`}</h2>
+              <div key={id} className="padding-1 pop-stat-container">
+                <span>{`${categoryToTitle(category)}`}</span>
                 {
-                  category.charts.filter(chart => {})
+                  chartLists[category].charts && chartLists[category].charts.filter(chart => hasFilters(chart, activeFilters)).map((chart,id) => {
+                    return  <Chart key={id} chart={chart} />;
+                  })
                 }
               </div>
             );
 
           })
         }
-        
-
-          <div className="card">
-
-          </div>
-        </div>
-      </div>
+      </div >
     );
   }
 }
+
+// 
