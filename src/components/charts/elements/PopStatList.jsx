@@ -19,9 +19,6 @@ export default class PopStatList extends Component {
 
     fetchBitcoinData()
       .then(stats => this.setState({ stats }));
-
-    fetchChartData()
-      .then(BCWallets => this.setState({ BCWallets }));
   }
 
   render() {
