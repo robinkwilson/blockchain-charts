@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { fetchBitcoinData, fetchChartData } from '../../../utils/chartsapi.js';
 import PopStat from './PopStat.jsx';
-
+import { Stat } from '../../common'
 
 export default class PopStatList extends Component {
 
@@ -10,88 +10,62 @@ export default class PopStatList extends Component {
     super(props);
 
     this.state = {
-      stats: null,
-      popularStats: {},
-    }
+      printedStats: [
+        {
+          title: 'BTC Market Price (USD)',
+          unit: 'USD',
+          statName: 'market_price_usd',
+          data: null,
+          hidden: true
+        },
+        { 
+          title: 'Avg Block Size',
+          unit: 'MB',
+          statName: 'blocks_size',
+          data: null,
+          hidden: true
+        },
+        {
+          title: 'Confirmed Transactions in Last 24 hours',
+          unit: 'Transactions',
+          statName: 'n_tx',
+          data: null,
+          hidden: true
+        }
+      ]
+    };
   }
 
   async componentDidMount() {
+    const { printedStats } = this.state;
 
     fetchBitcoinData()
-      .then(stats => this.setState({ stats }));
+      .then(data => {
+        let dataAdded = printedStats.map(cur => {
+          cur.data = data[cur.statName];
+          if (cur.data) cur.hidden = false; // data isn't null or undefined
+          return cur;
+        });
+        this.setState({ stats: dataAdded });
+      })
+      .catch(err => {
+        return null;
+      });
   }
 
   render() {
+    const { printedStats } = this.state;
     return (
       <div>
         <div className="container padding-1 pop-stat-container">
+          {
+            printedStats.map((cur, index) => {
+              return cur.hidden === false ? <Stat key={index} title={cur.title} data={cur.data ? cur.data : null} unit={cur.unit} /> : ''
+            })
+          }
           <PopStat />
         </div>
       </div>
     );
   }
 }
-
-
-// const helpers = {
-//   calculateSubtext:
-//     function (stat, perUnit, unitTxt, subTxt) {
-//       return subTxt + this.calculatePerUnit(stat, perUnit) + unitTxt + 's';
-//     },
-//   calculatePerUnit:
-//     function (stat, perUnit) {
-//       return stat / perUnit;
-//     }
-// }
-
-// const comparisons = {
-//   market_price_usd: {
-//     unitTxt: 'latte', // should change for popular unit between country (ex-China would say price of x street food)
-//     perUnit: 5, // 1 latte for $5
-//     subtext: '1 BTC can purchase',
-//     image: ''
-//   },
-//   my_wallet_n_users: {
-//     text: 'Trusted for the highest security and for our easy to use wallet application.' // if text, do not use the graphs
-//   }
-// }
-
-// const printedStats = [
-//   {
-//     title: 'BTC Market Price (USD)',
-//     statUnit: 'USD',
-//     query: {
-//       dataType: 'stat', // stat fetches blockchain.info/stats, chart fetches blockchain.info/charts + query data
-//       propName: 'market_price_usd'
-//     }
-//   },
-//   {
-//     title: 'Blockchain Wallet Users',
-//     statUnit: 'users',
-//     query: {
-//       dataType: 'chart', // stat => blockchain.info/stats || chart => blockchain.info/charts + query data
-//       propName: 'my-wallet-n-users',
-//       queryTxt: '?timespan=1weeks&format=json'
-//     }
-//   }
-// ]
-
-
-// printedStats.map(stat => {
-//   // for stats query
-//   if (stat.query.dataType === 'stat' && Object.keys(statTemp).length === 0) {
-//       fetchBitcoinData()
-//       .then(stats => {
-//         statTemp = stats;
-//         this.setState({ stats, popStats: this.state.popStats[stat.query.propName]  });
-//       })
-//     }
-//   } 
-//   // for chart query, could be an expensive timing wise data call(s)
-//   else if (stat.query.dataType === 'chart') { 
-//     fetchChartData(stat.query.propName, stat.query.queryTxt)
-//     .then(stats => {
-//       this.set
-//     })
-//   }
-// })
