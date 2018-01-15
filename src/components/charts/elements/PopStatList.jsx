@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import { fetchBitcoinData, fetchChartData } from '../../../utils/chartsapi.js';
-import PopStat from './PopStat.jsx';
-import { Stat } from '../../common'
+import ChartQuery from './ChartQuery.jsx';
+import { Stat } from '../../common';
 
 export default class PopStatList extends Component {
 
@@ -63,7 +63,7 @@ export default class PopStatList extends Component {
               return cur.hidden === false ? <Stat key={index} title={cur.title} data={cur.data ? cur.data : null} unit={cur.unit} /> : ''
             })
           }
-          <PopStat />
+          <ChartQuery />
         </div>
       </div>
     );
