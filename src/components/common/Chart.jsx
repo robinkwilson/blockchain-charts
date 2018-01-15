@@ -42,13 +42,11 @@ class Chart extends Component {
     let hidden = true;
     const q_transVal = fetchChartData(transactionValue.query);
     const q_minersRev = fetchChartData(minersRevenue.query);
-    const q_transFees = fetchChartData(transactionFees.query);
 
-    Promise.all([q_transVal, q_minersRev, q_transFees])
-      .then(([data_transVal, data_minersRev, data_transFees]) => {
+    Promise.all([q_transVal, q_minersRev])
+      .then(([data_transVal, data_minersRev]) => {
         transactionValue.data = data_transVal.values;
         minersRevenue.data = data_minersRev.values;
-        transactionFees.data = data_transFees.values;
 
         console.log("data loaded", data_transVal.values);
         hidden = false;
@@ -90,9 +88,9 @@ class Chart extends Component {
 
     const opts = {
       title: {
-        text: "Chart.js Time Scale"
+        display: true,
+        text: 'Transaction Value vs Miners Revenue (USD)'
       },
-      multiTooltipTemplate: "<%= value + ' %' %>",
       tooltips: {
         mode: 'label',
         callbacks: {
