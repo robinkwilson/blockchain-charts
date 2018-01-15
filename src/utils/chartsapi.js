@@ -14,7 +14,7 @@ export async function fetchChartData(propName, queryText) {
   return fetch(proxy + 'https://api.blockchain.info/charts/' + propName + appendText)
   .then(res => res.json())
   .catch(err => {
-    console.error('Could not fetch wallet data');
+    console.error('Could not fetch chart data');
     return null;
   });
 }
