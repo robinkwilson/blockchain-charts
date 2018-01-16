@@ -33,7 +33,7 @@ export class ChartList extends Component {
           ]
         }
       }
-    }
+    };
   }
 
   render() {
@@ -46,12 +46,6 @@ export class ChartList extends Component {
       </div >
     );
   }
-}
-
-// converts this.state.chartList property names into section titles
-// ex: 'currency_statistics' => 'Currency Statistics'
-function categoryToTitle(name) {
-  return name.split('_').map(str => str[0].toUpperCase() + str.slice(1)).join(' '); //
 }
 
 const mapState = (state) => {

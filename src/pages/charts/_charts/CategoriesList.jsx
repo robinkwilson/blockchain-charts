@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+
+import ChartTilesContainer from './ChartTilesContainer.jsx';
 
 export default function CategoriesList(props) {
   const { categories, chartLists } = props;
@@ -8,7 +9,7 @@ export default function CategoriesList(props) {
       {
         categories && categories.map((category, id) => {
           return (
-            <div>
+            <div key={id}>
               <h2>{`${categoryToTitle(category)}`}</h2>
               <button className="btn btn-primary" type="button" data-toggle="collapse" data-target={`#${category}`} aria-expanded="false" aria-controls={category}>
                 Collapse
@@ -22,4 +23,10 @@ export default function CategoriesList(props) {
       }
     </section>
   );
+}
+
+// converts this.state.chartList property names into section titles
+// ex: 'currency_statistics' => 'Currency Statistics'
+function categoryToTitle(name) {
+  return name.split('_').map(str => str[0].toUpperCase() + str.slice(1)).join(' '); //
 }

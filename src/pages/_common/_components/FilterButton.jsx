@@ -13,19 +13,14 @@ export class FilterButton extends Component {
   // Event handler for Filter Button click event
   // Adds inactive button to active status and vice versa
   toggleFilter(evt) {
-
     const { activeFilters, addActiveFilter, deleteActiveFilter } = this.props;
-    console.log('active filters', activeFilters );
 
     const cur_text = evt.target.innerText;
     const cur_isActive = activeFilters.indexOf(cur_text) !== -1;
-    console.log('is active ', cur_isActive, ' classes are ', evt.target.className);
 
     if (!cur_isActive) { // not active element
-      //add to activeFilters array
       addActiveFilter(cur_text);
     } else { // active element
-      //remove from activeFilters array
       deleteActiveFilter(cur_text);
     }
   }

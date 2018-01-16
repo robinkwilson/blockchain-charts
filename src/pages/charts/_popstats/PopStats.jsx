@@ -7,7 +7,7 @@ import {
   fetchChartData 
 } from '../../_common';
 
-export default class PopStatList extends Component {
+export default class PopStats extends Component {
 
   constructor(props) {
     super(props);
