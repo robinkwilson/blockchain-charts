@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import ChartList from './elements/ChartList.jsx';
-import PopStatList from './elements/PopStatList.jsx';
+import ChartList from './_charts/ChartList.jsx';
+import PopStatList from './_popstats/PopStatList.jsx';
 
 export default class Charts extends Component {
   render() {

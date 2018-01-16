@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 
-import Chart from './ChartTile.jsx';
-import { FilterButton } from '../../common';
+import ChartTile from './ChartTile.jsx';
+import FilterList from './FilterList.jsx';
 
 export default class ChartList extends Component {
 
@@ -43,11 +43,13 @@ export default class ChartList extends Component {
         }
       }
     }
+    this.toggleFilter = this.toggleFilter.bind(this);
   }
 
   // Event handler for Filter Button click event
   // Adds inactive button to active status and vice versa
-  toggleFilter(id, evt) {
+  toggleFilter(evt, id) {
+    console.log('toggle arguments', evt, id);
 
     const cur_id = id;
     const cur_text = evt.target.innerText;
@@ -76,32 +78,23 @@ export default class ChartList extends Component {
     const categories = Object.keys(chartLists);
     return (
       <div>
-        <div className="bg-darker-blue padding-1">
-          <h2>Filters</h2>
-          <div className='flex-row container'>
-            {
-              filters && filters.map((cur, id) => {
-                return (
-                  <FilterButton key={id} text={cur.text} onClick={this.toggleFilter.bind(this, id)} classes={cur.active ? "btn btn-filter focus active" : "btn btn-filter"} />
-                );
-              })
-            }
-          </div>
-        </div>
+        <FilterList filters={filters} onClick={this.toggleFilter}/>
         {
           categories && categories.map((category, id) => {
             return (
               <div key={id} className="padding-1 charts">
                 <h2>{`${categoryToTitle(category)}`}</h2>
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target={`${category}`} aria-expanded="true" aria-controls="collapseExample">
+                <button className="btn btn-primary" type="button" data-toggle="collapse" data-target={`#${category}`} aria-expanded="false" aria-controls={category}>
                   Collapse
                 </button>
-                <div id={category} className='collapse flex-row container'>
-                  {
-                    chartLists[category].charts && chartLists[category].charts.filter(chart => hasFilters(chart, activeFilters)).map((chart, id) => {
-                      return <Chart key={id} chart={chart} />;
-                    })
-                  }
+                <div id={category}>
+                  <div className='flex-row container'>
+                    {
+                      chartLists[category].charts && chartLists[category].charts.filter(chart => hasFilters(chart, activeFilters)).map((chart, id) => {
+                        return <ChartTile key={id} chart={chart} />;
+                      })
+                    }
+                  </div>
                 </div>
               </div>
             );
@@ -114,6 +107,7 @@ export default class ChartList extends Component {
 
 // List of possible filters for buttons
 const filterList = ['BTC', 'USD', 'Avg', '#', 'MB', 'Time', 'Per BTC', 'Total BTC', 'Total Blocks', 'Per Block', 'Block']
+// initialize the filters objects
 const filters = filterList.map(filterName => {
   return {
     text: filterName,

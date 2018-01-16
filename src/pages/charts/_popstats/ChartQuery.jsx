@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import ChartJS from 'react-chartjs-2';
 import moment from 'moment';
 
-import { fetchChartData } from '../../../utils/chartsapi.js';
-import { numberWithCommasNoDecimals } from '../../../utils/helpers.js';
+import { 
+  numberWithCommasNoDecimals,
+  fetchChartData 
+} from '../../_common';
 
 export default class ChartQuery extends Component {
 
