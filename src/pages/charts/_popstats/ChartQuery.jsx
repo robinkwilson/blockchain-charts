@@ -44,20 +44,19 @@ export default class ChartQuery extends Component {
           label: 'Estimated Transaction Value (USD)',
           fill: false,
           borderColor: 'rgba(75,192,192,1)',
-          pointRadius: 0.1,
+          pointRadius: 0.2,
           data: queryData.transactionValue ? queryData.transactionValue : [],
         },
         {
           label: 'Miners Revenue (USD)',
           fill: false,
           borderColor: 'rgba(80,0,192,1)',
-          pointRadius: 0.1,
+          pointRadius: 0.2,
           data: queryData.minersRevenue ? queryData.minersRevenue : [],
         }
       ]
     };
 
-    console.log(chartData);
     return (
       <div className={hidden ? 'hidden' : 'parent-h-w'} >
         <ChartJS data={chartData} options={opts} type='line' />
