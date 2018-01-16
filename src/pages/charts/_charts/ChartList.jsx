@@ -5,7 +5,7 @@ import _ from 'lodash';
 import ChartTile from './ChartTile.jsx';
 import FilterList from './FilterList.jsx';
 
-export default class ChartList extends Component {
+export class ChartList extends Component {
 
   constructor(props) {
     super(props);
@@ -102,7 +102,6 @@ function hasFilters(chart, activeFilters) {
   else if (chart.filters) return _.difference(activeFilters, chart.filters).length === 0;
   else return false;
 }
-
 
 const mapState = (state) => {
   console.log("State is: ", state);
