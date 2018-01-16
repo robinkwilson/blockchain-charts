@@ -58,7 +58,7 @@ export default class ChartQuery extends Component {
 
     console.log(chartData);
     return (
-      <div className={hidden ? 'col-sm-12 hidden' : 'col-sm-12'} >
+      <div className={hidden ? 'hidden' : 'parent-h-w'} >
         <ChartJS data={chartData} options={opts} type='line' />
       </div>
     );
@@ -66,6 +66,8 @@ export default class ChartQuery extends Component {
 }
 
 const opts = {
+  responsive: true,
+  maintainAspectRatio: false,
   hover: {
     intersect: false,
   },
@@ -76,7 +78,6 @@ const opts = {
   legend: {
     position: 'bottom'
   },
-  responsive: true,
   tooltips: {
     mode: 'x',
     callbacks: {

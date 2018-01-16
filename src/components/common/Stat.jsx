@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-class Stat extends Component {
+import { numberWithCommasNoDecimals, numberWithCommasWithDecimals } from '../../utils/helpers.js'
+export default class Stat extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,15 +12,13 @@ class Stat extends Component {
   }
 
   render() {
-    const {title, data, unit} = this.state;
+    const { title, data, unit } = this.state;
     return (
-      <div>
-        <h1>{title}</h1>
-        <p>{data}</p>
-        <p>{unit}</p>
+      <div className="padding-1">
+        <span className="no-p-m">{title}</span>
+        <p className="no-p-m fnt-16">{ data.toString().indexOf('.') === -1 ? numberWithCommasNoDecimals(data) : numberWithCommasWithDecimals(data) }</p>
+        <p className="fnt-12 no-p-m">{unit}</p>
       </div>
     );
   }
 }
-
-export default Stat;
