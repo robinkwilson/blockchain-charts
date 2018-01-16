@@ -31,15 +31,6 @@ export default class ChartList extends Component {
             { title: 'Transactions per Block', sub: 'Avg #(Transactions/Block) x Time', link: 'n-transactions-per-block', filters: ['Avg', 'Transactions/Block', 'Per Block', '#', 'Time'] },
             { title: 'Median Transaction Confirmation Time (with fee)', sub: 'Avg(Time) x Time', link: 'median-confirmation-time', filters: ['Avg', 'Time'] },
           ]
-        },
-        mining_information: {
-          charts: []
-        },
-        network_activity: {
-          charts: []
-        },
-        blockchain_wallet_activity: {
-          charts: []
         }
       }
     }
