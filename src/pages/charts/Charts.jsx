@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ChartList from './_charts/ChartList.jsx';
+import ChartList from './_chartlist/ChartList.jsx';
 import PopStats from './_popstats/PopStats.jsx';
 import { Heading } from '../_common';
 
