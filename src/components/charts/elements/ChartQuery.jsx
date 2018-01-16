@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ChartJS from 'react-chartjs-2';
 import moment from 'moment';
 
-//import { Chart } from '../../common';
 import { fetchChartData } from '../../../utils/chartsapi.js';
 import { numberWithCommasNoDecimals } from '../../../utils/helpers.js';
 

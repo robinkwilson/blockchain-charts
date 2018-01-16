@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 
-import Chart from './Chart.jsx';
+import Chart from './ChartTile.jsx';
+import { FilterButton } from '../../common';
 
 export default class ChartList extends Component {
   
@@ -42,7 +43,6 @@ export default class ChartList extends Component {
         }
       }
     }
-    
   }
   
   // Event handler for Filter Button click event
@@ -82,9 +82,7 @@ export default class ChartList extends Component {
             {
               filters && filters.map((cur, id) => {
                 return (
-                  <button key={id} type="button" onClick={this.toggleFilter.bind(this, id)} className={cur.active ? "btn btn-filter focus active" : "btn btn-filter"} data-toggle="button" aria-pressed="false" autoComplete="off">
-                    {cur.text}
-                  </button>
+                  <FilterButton key={id} text={cur.text} onClick={this.toggleFilter.bind(this, id)} classes={cur.active ? "btn btn-filter focus active" : "btn btn-filter"} />
                 );
               })
             }
@@ -93,9 +91,9 @@ export default class ChartList extends Component {
         {
           categories && categories.map((category, id) => {
             return (
-              <div key={id} className="padding-1">
+              <div key={id} className="padding-1 charts">
                 <h2>{`${categoryToTitle(category)}`}</h2>
-                <div className='flex-row container pop-stat-container'>
+                <div className='flex-row container'>
                   {
                     chartLists[category].charts && chartLists[category].charts.filter(chart => hasFilters(chart, activeFilters)).map((chart, id) => {
                       return <Chart key={id} chart={chart} />;
