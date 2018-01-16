@@ -5,10 +5,10 @@ import Chart from './ChartTile.jsx';
 import { FilterButton } from '../../common';
 
 export default class ChartList extends Component {
-  
+
   constructor(props) {
     super(props);
-    
+
     this.state = {
       filters: filters,
       activeFilters: [],
@@ -25,7 +25,7 @@ export default class ChartList extends Component {
         },
         block_details: {
           charts: [
-            { title: 'Blockchain Size (MB)', sub: 'MB(Total Blocks) x Time', link: 'blocks-size', filters: ['MB', 'Time', 'Total Blocks', 'Block'] }, 
+            { title: 'Blockchain Size (MB)', sub: 'MB(Total Blocks) x Time', link: 'blocks-size', filters: ['MB', 'Time', 'Total Blocks', 'Block'] },
             { title: 'Average Block Size (MB)', sub: 'MB(1 Block) x Time', link: 'avg-block-size', filters: ['MB', 'Time', 'Per Block', 'Block'] },
             { title: 'Number of Orphaned Blocks', sub: '#(Total Blocks) x Time', link: 'n-orphaned-blocks', filters: ['#(Total Blocks)', '#', 'Block', 'Time'] },
             { title: 'Transactions per Block', sub: 'Avg #(Transactions/Block) x Time', link: 'n-transactions-per-block', filters: ['Avg', 'Transactions/Block', 'Per Block', '#', 'Time'] },
@@ -44,19 +44,19 @@ export default class ChartList extends Component {
       }
     }
   }
-  
+
   // Event handler for Filter Button click event
   // Adds inactive button to active status and vice versa
   toggleFilter(id, evt) {
-    
+
     const cur_id = id;
     const cur_text = evt.target.innerText;
     const cur_isActive = evt.target.className.indexOf('active') !== -1;
     let cur = this.state.filters[cur_id];
-    
+
     let active = this.state.activeFilters;
     let filters = this.state.filters;
-    
+
     if (!cur_isActive) { // not active element
       //add to activeFilters array
       this.setState({ activeFilters: active.concat([{ text: evt.target.innerText, id: cur_id }]) });
@@ -64,16 +64,16 @@ export default class ChartList extends Component {
       //remove from activeFilters array
       this.setState({ activeFilters: active.filter(item => item.text !== cur_text) })
     }
-    
+
     // inside state filters array toggle 'active' property
     cur.active = !cur_isActive;
     filters.splice(cur_id, 1, cur);
     this.setState({ filters: filters });
   }
-  
+
   render() {
     const { chartLists, activeFilters, filters } = this.state;
-    const categories = Object.keys(chartLists); 
+    const categories = Object.keys(chartLists);
     return (
       <div>
         <div className="bg-darker-blue padding-1">
@@ -93,7 +93,10 @@ export default class ChartList extends Component {
             return (
               <div key={id} className="padding-1 charts">
                 <h2>{`${categoryToTitle(category)}`}</h2>
-                <div className='flex-row container'>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target={`${category}`} aria-expanded="true" aria-controls="collapseExample">
+                  Collapse
+                </button>
+                <div id={category} className='collapse flex-row container'>
                   {
                     chartLists[category].charts && chartLists[category].charts.filter(chart => hasFilters(chart, activeFilters)).map((chart, id) => {
                       return <Chart key={id} chart={chart} />;

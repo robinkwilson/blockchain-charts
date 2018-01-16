@@ -62,7 +62,16 @@ export default class PopStatList extends Component {
           <div className="center col-sm-12 col-md-3 col-lg-4">
             {
               printedStats.map((cur, index) => {
-                return cur.hidden === false ? <Stat key={index} title={cur.title} data={cur.data ? cur.data : null} unit={cur.unit} sign={cur.sign ? cur.sign : ''} /> : ''
+                return (
+                  cur.hidden === false
+                    ? <Stat
+                      key={index}
+                      title={cur.title}
+                      data={cur.data ? cur.data : null}
+                      unit={cur.unit}
+                      sign={cur.sign ? cur.sign : ''} />
+                    : ''
+                )
               })
             }
           </div>
