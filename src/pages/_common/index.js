@@ -5,7 +5,8 @@ import Stat from './_components/Stat.jsx';
 import Heading from './_components/Heading.jsx';
 import {
   numberWithCommasNoDecimals,
-  numberWithCommasWithDecimals
+  numberWithCommasWithDecimals,
+  hasFilters
 } from './_utils/helpers.js';
 
 import {
@@ -17,6 +18,7 @@ export {
   Button,
   Chart,
   Stat,
+  Heading,
   FilterButton,
   numberWithCommasNoDecimals,
   numberWithCommasWithDecimals,

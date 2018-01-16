@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export function CategoriesList(props) {
+export default function CategoriesList(props) {
   const { categories, chartLists } = props;
   return (
     <section className="padding-1 charts">
@@ -23,5 +23,3 @@ export function CategoriesList(props) {
     </section>
   );
 }
-
-export default CategoriesList;

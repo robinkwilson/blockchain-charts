@@ -13,7 +13,7 @@ export function numberWithCommasWithDecimals(num) {
 
 // true if all activeFilters elements are contained inside chart.filters
 // true if activeFilters is empty 
-function hasFilters(chart, activeFilters) {
+export function hasFilters(chart, activeFilters) {
   if (activeFilters.length === 0) return true;
   else if (chart.filters) return _.difference(activeFilters, chart.filters).length === 0;
   else return false;
