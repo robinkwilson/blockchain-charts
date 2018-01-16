@@ -33,30 +33,9 @@ export class ChartList extends Component {
         }
       }
     }
-    this.toggleFilter = this.toggleFilter.bind(this);
-  }
-
-  // Event handler for Filter Button click event
-  // Adds inactive button to active status and vice versa
-  toggleFilter(evt) {
-    console.log('button click event', evt);
-    const {activeFilters, filters} = this.props;
-    console.log('props filters', activeFilters, filters);
-
-    const cur_text = evt.target.innerText;
-    const cur_isActive = evt.target.className.indexOf('active') !== -1;
-
-    if (!cur_isActive) { // not active element
-      //add to activeFilters array
-      this.props.addActiveFilter(cur_text);
-    } else { // active element
-      //remove from activeFilters array
-      this.props.deleteActiveFilter(cur_text);
-    }
   }
 
   render() {
-    console.log('ChartList props',this.props);
     const { chartLists } = this.state;
     const { activeFilters, filters } = this.props;
     const categories = Object.keys(chartLists);
@@ -104,11 +83,9 @@ function hasFilters(chart, activeFilters) {
 }
 
 const mapState = (state) => {
-  console.log("State is: ", state);
-  const {activeFilters, filters} = state.filters;
   return {
-    activeFilters,
-    filters
+    activeFilters: state.activeFilters,
+    filters: state.filters
   };
 };
 

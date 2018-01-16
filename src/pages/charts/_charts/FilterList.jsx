@@ -1,9 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { FilterButton } from '../../_common';
 
 export function FilterList(props) {
-  const { filters, activeFilters, onClick } = props;
+  const { filters } = props;
   return (
     <div className="bg-darker-blue padding-1">
       <h2>Filters</h2>
@@ -11,10 +12,7 @@ export function FilterList(props) {
         {
           filters && filters.map((filterName, id) => {
             return (
-              <FilterButton
-                key={id} text={filterName}
-                classes={ activeFilters.indexOf(filterName) !== -1 ? "btn btn-filter focus active" : "btn btn-filter"}
-              />
+              <FilterButton key={id} text={filterName} />
             );
           })
         }
@@ -24,10 +22,8 @@ export function FilterList(props) {
 }
 
 const mapState = (state) => {
-  const {activeFilters, filters} = state.filters;
   return {
-    activeFilters,
-    filters
+    filters: state.filters
   };
 };
 
