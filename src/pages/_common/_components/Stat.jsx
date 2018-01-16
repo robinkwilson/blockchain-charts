@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { numberWithCommasNoDecimals, numberWithCommasWithDecimals } from '../../utils/helpers.js';
+import { numberWithCommasNoDecimals, numberWithCommasWithDecimals } from '../';
 
 export default function Stat(props) {
   const { title, data, unit, sign } = props;

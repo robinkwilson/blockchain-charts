@@ -32,6 +32,10 @@ body {
   }
 }
 
+.card {
+  height: 100%;
+}
+
 .hidden {
   display: none;
 }
@@ -69,7 +73,7 @@ body {
   background-color: inherit;
 }
 
-.btn.focus {
+.btn.active {
   background-color: $color-darkest-blue;
   border: 2px solid $color-white;
   box-shadow: none;

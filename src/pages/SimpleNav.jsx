@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button } from './common';
+import { Button } from './_common';
 
 export default class SimpleNav extends Component {
   render() {
