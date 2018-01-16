@@ -7,17 +7,18 @@ export default class Stat extends Component {
     this.state = {
       title: props.title,
       data: props.data,
-      unit: props.unit
+      unit: props.unit,
+      sign: props.sign
     }
   }
 
   render() {
-    const { title, data, unit } = this.state;
+    const { title, data, unit, sign} = this.state;
     return (
-      <div className="padding-1">
-        <span className="no-p-m">{title}</span>
-        <p className="no-p-m fnt-16">{ data.toString().indexOf('.') === -1 ? numberWithCommasNoDecimals(data) : numberWithCommasWithDecimals(data) }</p>
-        <p className="fnt-12 no-p-m">{unit}</p>
+      <div className="padding-sm">
+        <span className="no-p-m fnt-md">{title}</span>
+        <p className="fnt-lg padding-xsm">{ sign + (data.toString().indexOf('.') === -1 ? numberWithCommasNoDecimals(data) : numberWithCommasWithDecimals(data)) }</p>
+        <p className="fnt-sm no-p-m">{unit}</p>
       </div>
     );
   }

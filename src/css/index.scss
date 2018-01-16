@@ -23,6 +23,14 @@ $color-darkest-blue: #376981;
   background-color: $color-darkest-blue;
 }
 
+body {
+  padding: 0px;
+  margin: 0px;
+  p {
+    padding: 0px;
+    margin: 0px;
+  }
+}
 
 .hidden {
   display: none;
@@ -68,10 +76,6 @@ $color-darkest-blue: #376981;
   color: white;
 }
 
-h2 {
-  text-align: center;
-}
-
 .sticky-menu {
   background: $color-light-blue;
   width: 100%;
@@ -84,7 +88,16 @@ h2 {
 .padding-2 {
   padding: 2em;
 }
+.padding-sm {
+  padding: 0.5em;
+}
+.padding-xsm {
+  padding: 0.2em;
+}
 
+img {
+  width: 100%
+}
 
 .charts:nth-child(odd) {
   background: grey;
@@ -94,17 +107,12 @@ h2 {
   text-align: center;
 }
 
-.fnt-14 {
-  font-size: 14px;
-}
-
-.fnt-12 {
-  font-size: 12px;
-}
-
-.fnt-16 {
-  font-size: 16px;
-}
+.fnt-xxlg {font-size: 2em;}
+.fnt-xlg {font-size: 1.8em;}
+.fnt-lg {font-size: 1.4em;}
+.fnt-md {font-size: 1em;}
+.fnt-sm {font-size: 0.8em;}
+.fnt-xsm { font-size: 0.6em;}
 
 .no-p-m {
   margin:0px;
@@ -114,4 +122,8 @@ h2 {
 .parent-h-w {
   width:100%;
   height:100%
+}
+
+.card {
+  
 }

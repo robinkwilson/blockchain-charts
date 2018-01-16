@@ -16,11 +16,12 @@ export default class PopStatList extends Component {
           unit: 'USD',
           statName: 'market_price_usd',
           data: null,
-          hidden: true
+          hidden: true,
+          sign: '$'
         },
         {
           title: 'Avg Block Size',
-          unit: 'MB',
+          unit: 'Bytes',
           statName: 'blocks_size',
           data: null,
           hidden: true
@@ -57,15 +58,15 @@ export default class PopStatList extends Component {
     const { printedStats } = this.state;
     return (
       <div className="container">
-        <div className="row">
-          <div className="center col-sm-12 col-md-6 col-lg-6">
+        <div className="row padding-1">
+          <div className="center col-sm-12 col-md-3 col-lg-4">
             {
               printedStats.map((cur, index) => {
-                return cur.hidden === false ? <Stat key={index} title={cur.title} data={cur.data ? cur.data : null} unit={cur.unit} /> : ''
+                return cur.hidden === false ? <Stat key={index} title={cur.title} data={cur.data ? cur.data : null} unit={cur.unit} sign={cur.sign ? cur.sign : ''} /> : ''
               })
             }
           </div>
-          <div className="col-sm-12 col-md-6 col-lg-6">
+          <div className="col-sm-12 col-md-9 col-lg-8 padding-sm">
             <ChartQuery />
           </div>
         </div>
