@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../css/index.scss';
 
 // Components
-import ChartSandbox from './ChartSandbox.jsx';
-import Charts from './Charts.jsx';
+import ChartSandbox from './chartsandbox/ChartSandbox.jsx';
+import Charts from './charts/Charts.jsx';
 import SimpleNav from './SimpleNav.jsx';
 import PageNotFound from './PageNotFound.jsx';
 
