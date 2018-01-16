@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import ChartQuery from './ChartQuery.jsx';
+import PrintedStats from './PrintedStats.jsx';
 import { 
-  Stat, 
   fetchBitcoinData, 
   fetchChartData 
 } from '../../_common';
@@ -42,7 +42,6 @@ export default class PopStats extends Component {
 
   async componentDidMount() {
     const { printedStats } = this.state;
-
     fetchBitcoinData()
       .then(data => {
         let dataAdded = printedStats.map(cur => {
@@ -63,20 +62,7 @@ export default class PopStats extends Component {
       <div className="container">
         <div className="row padding-1">
           <div className="center col-sm-12 col-md-3 col-lg-4">
-            {
-              printedStats.map((cur, index) => {
-                return (
-                  cur.hidden === false
-                    ? <Stat
-                      key={index}
-                      title={cur.title}
-                      data={cur.data ? cur.data : null}
-                      unit={cur.unit}
-                      sign={cur.sign ? cur.sign : ''} />
-                    : ''
-                )
-              })
-            }
+            <PrintedStats printedStats={printedStats} />
           </div>
           <div className="col-sm-12 col-md-9 col-lg-8 padding-sm">
             <ChartQuery />
