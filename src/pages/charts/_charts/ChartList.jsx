@@ -41,7 +41,8 @@ export class ChartList extends Component {
     const categories = Object.keys(chartLists);
     return (
       <div>
-        <FilterList filters={filters} onClick={this.toggleFilter}/>
+        <FilterList />
+        <CategoriesList categories={categories} />
         {
           categories && categories.map((category, id) => {
             return (
