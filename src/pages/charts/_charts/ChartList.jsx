@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 import ChartTile from './ChartTile.jsx';
 import FilterList from './FilterList.jsx';
+import CategoriesList from './CategoriesList.jsx';
 
 export class ChartList extends Component {
 
@@ -37,33 +38,11 @@ export class ChartList extends Component {
 
   render() {
     const { chartLists } = this.state;
-    const { activeFilters, filters } = this.props;
     const categories = Object.keys(chartLists);
     return (
       <div>
         <FilterList />
-        <CategoriesList categories={categories} />
-        {
-          categories && categories.map((category, id) => {
-            return (
-              <div key={id} className="padding-1 charts">
-                <h2>{`${categoryToTitle(category)}`}</h2>
-                <button className="btn btn-primary" type="button" data-toggle="collapse" data-target={`#${category}`} aria-expanded="false" aria-controls={category}>
-                  Collapse
-                </button>
-                <div id={category}>
-                  <div className='flex-row container'>
-                    {
-                      chartLists[category].charts && chartLists[category].charts.filter(chart => hasFilters(chart, activeFilters)).map((chart, id) => {
-                        return <ChartTile key={id} chart={chart} />;
-                      })
-                    }
-                  </div>
-                </div>
-              </div>
-            );
-          })
-        }
+        <CategoriesList categories={categories} chartLists={chartLists} />
       </div >
     );
   }
@@ -73,14 +52,6 @@ export class ChartList extends Component {
 // ex: 'currency_statistics' => 'Currency Statistics'
 function categoryToTitle(name) {
   return name.split('_').map(str => str[0].toUpperCase() + str.slice(1)).join(' '); //
-}
-
-// true if all activeFilters elements are contained inside chart.filters
-// true if activeFilters is empty 
-function hasFilters(chart, activeFilters) {
-  if (activeFilters.length === 0) return true;
-  else if (chart.filters) return _.difference(activeFilters, chart.filters).length === 0;
-  else return false;
 }
 
 const mapState = (state) => {

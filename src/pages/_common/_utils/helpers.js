@@ -11,6 +11,14 @@ export function numberWithCommasWithDecimals(num) {
   return parts.join(".");
 }
 
+// true if all activeFilters elements are contained inside chart.filters
+// true if activeFilters is empty 
+function hasFilters(chart, activeFilters) {
+  if (activeFilters.length === 0) return true;
+  else if (chart.filters) return _.difference(activeFilters, chart.filters).length === 0;
+  else return false;
+}
+
 // export function roundToMillions(num) {
 //   const roundToTenThous = Math.round(10000000 * value) / 10000000;
 //   const stringify = roundToTenThous.toString();
@@ -20,5 +28,6 @@ export function numberWithCommasWithDecimals(num) {
 
 export default {
   numberWithCommasNoDecimals,
-  numberWithCommasWithDecimals
+  numberWithCommasWithDecimals,
+  hasFilters
 }

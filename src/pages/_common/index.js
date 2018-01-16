@@ -20,7 +20,7 @@ export {
   FilterButton,
   numberWithCommasNoDecimals,
   numberWithCommasWithDecimals,
+  hasFilters,
   fetchBitcoinData,
   fetchChartData
-
 }
