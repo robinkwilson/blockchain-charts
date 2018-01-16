@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import ChartTile from './ChartTile.jsx';
@@ -10,8 +11,6 @@ export default class ChartList extends Component {
     super(props);
 
     this.state = {
-      filters: filters,
-      activeFilters: [],
       chartLists: {
         // Property names are used section titles converted by categoryToTitle()
         currency_statistics: {
@@ -39,33 +38,27 @@ export default class ChartList extends Component {
 
   // Event handler for Filter Button click event
   // Adds inactive button to active status and vice versa
-  toggleFilter(evt, id) {
-    console.log('toggle arguments', evt, id);
+  toggleFilter(evt) {
+    console.log('button click event', evt);
+    const {activeFilters, filters} = this.props;
+    console.log('props filters', activeFilters, filters);
 
-    const cur_id = id;
     const cur_text = evt.target.innerText;
     const cur_isActive = evt.target.className.indexOf('active') !== -1;
-    let cur = this.state.filters[cur_id];
-
-    let active = this.state.activeFilters;
-    let filters = this.state.filters;
 
     if (!cur_isActive) { // not active element
       //add to activeFilters array
-      this.setState({ activeFilters: active.concat([{ text: evt.target.innerText, id: cur_id }]) });
+      this.props.addActiveFilter(cur_text);
     } else { // active element
       //remove from activeFilters array
-      this.setState({ activeFilters: active.filter(item => item.text !== cur_text) })
+      this.props.deleteActiveFilter(cur_text);
     }
-
-    // inside state filters array toggle 'active' property
-    cur.active = !cur_isActive;
-    filters.splice(cur_id, 1, cur);
-    this.setState({ filters: filters });
   }
 
   render() {
-    const { chartLists, activeFilters, filters } = this.state;
+    console.log('ChartList props',this.props);
+    const { chartLists } = this.state;
+    const { activeFilters, filters } = this.props;
     const categories = Object.keys(chartLists);
     return (
       <div>
@@ -96,16 +89,6 @@ export default class ChartList extends Component {
   }
 }
 
-// List of possible filters for buttons
-const filterList = ['BTC', 'USD', 'Avg', '#', 'MB', 'Time', 'Per BTC', 'Total BTC', 'Total Blocks', 'Per Block', 'Block']
-// initialize the filters objects
-const filters = filterList.map(filterName => {
-  return {
-    text: filterName,
-    active: false
-  }
-})
-
 // converts this.state.chartList property names into section titles
 // ex: 'currency_statistics' => 'Currency Statistics'
 function categoryToTitle(name) {
@@ -115,8 +98,26 @@ function categoryToTitle(name) {
 // true if all activeFilters elements are contained inside chart.filters
 // true if activeFilters is empty 
 function hasFilters(chart, activeFilters) {
-  let active = activeFilters.map(filter => filter.text);
   if (activeFilters.length === 0) return true;
-  else if (chart.filters) return _.difference(active, chart.filters).length === 0;
+  else if (chart.filters) return _.difference(activeFilters, chart.filters).length === 0;
   else return false;
 }
+
+
+const mapState = (state) => {
+  console.log("State is: ", state);
+  const {activeFilters, filters} = state.filters;
+  return {
+    activeFilters,
+    filters
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    addActiveFilter: (filter) => { dispatch(addActiveFilter(filter)) },
+    deleteActiveFilter: (filter) => { dispatch(addActiveFilter(filter)) }
+  };
+};
+
+export default connect(mapState, mapDispatch)(ChartList);
