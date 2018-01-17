@@ -25,7 +25,6 @@ export const deleteActiveFilter = (filterName) => {
 }
 
 export function filtersReducer(state = initialState, action) {
-  console.log('state active filters are ', state.activeFilters);
   switch (action.type) {
     case ADD_ACTIVE_FILTER:
       return Object.assign({}, state, { activeFilters: state.activeFilters.concat(action.filterName) });

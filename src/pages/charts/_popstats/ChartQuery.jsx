@@ -14,7 +14,7 @@ export default class ChartQuery extends Component {
     super(props);
     this.state = {
       queryData: {},
-      hidden: false   //if loading data fails chart is hidden from view
+      hidden: true   //if loading data fails chart is hidden from view
     }
   }
 
