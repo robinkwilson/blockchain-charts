@@ -4,7 +4,7 @@
   "description": "Recreate Blockchain.info/charts",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./**/*.spec.js --require babel-core/register",
     "build": "webpack",
     "dev": "webpack-dev-server"
   },
@@ -36,9 +36,14 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
     "css-loader": "^0.28.8",
+    "enzyme": "^3.3.0",
+    "mocha": "^4.1.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
+    "sinon": "^4.1.6",
+    "sinon-chai": "^2.14.0",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.10.1"
