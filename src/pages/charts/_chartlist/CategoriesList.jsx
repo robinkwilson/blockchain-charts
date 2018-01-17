@@ -5,7 +5,7 @@ import ChartTilesContainer from './ChartTilesContainer.jsx';
 export default function CategoriesList(props) {
   const { categories, chartLists } = props;
   return (
-    <div>
+    <div id="chart-list">
       {
         categories && categories.map((category, id) => {
           return (

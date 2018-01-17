@@ -1,11 +1,17 @@
 $color-header: #004a7c;
 $color-white: #fff;
 $color-light-blue-grey: #F5F7F9;
-$color-dark-grey: #5f5f5f;
 $color-black: #000;
 $color-light-blue: #e3eff5;
-$color-darker-blue: #88ADBF;
-$color-darkest-blue: #376981;
+$color-darker-blue: #BAD2DE;
+$color-darkest-blue: #004a7c;
+//$color-dark-grey: #5f5f5f; // Blockchain text
+$color-dark-grey: #242424;
+$color-dark-blue: #004a7c; // Blockchain text
+
+body {
+  color: $color-dark-grey;
+}
 
 .bg-primary{
   background-color: $color-white;
@@ -54,13 +60,13 @@ body {
     justify-content: space-around;
   }
 
+  // nav buttons
   button {
     background: none;
     color: white;
     font-weight: bold;
     border-radius: 0;
   }
-
   button:hover {
     background: black;
   }
@@ -69,7 +75,8 @@ body {
 
 .btn-filter {
   margin: 0.3rem;
-  border: 2px solid $color-darkest-blue;
+  border: 2px solid $color-dark-grey;
+  color: $color-dark-grey;
   background-color: inherit;
 }
 
@@ -147,6 +154,10 @@ img {
   min-height: 360px;
 }
 
-@media (min-width: 576px) { 
-  
+@media (max-width: 576px) { 
+  #chart-list, #filters {
+    h2 {
+      text-align: left;
+    }
+  }
  }

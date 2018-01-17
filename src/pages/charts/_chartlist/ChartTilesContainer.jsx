@@ -17,7 +17,7 @@ export function ChartTilesContainer(props) {
         ? filtered.map((chart, id) => {
             return <ChartTile key={id} chart={chart} />;
           })
-        : <p>No charts with selected filters.</p>
+        : <p className="center padding-sm">No charts with selected filters.</p>
       }
     </div>
   );
