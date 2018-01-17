@@ -4,7 +4,7 @@ import chai, { expect } from 'chai';
 import { ADD_ACTIVE_FILTER, DELETE_ACTIVE_FILTER } from './filters';
 import { addActiveFilter, deleteActiveFilter } from './filters';
 
-describe('Filter Redux Store', () => {
+describe('Redux Store Filter', () => {
   describe('actions', () => {
 
     it('should create add active filter action', () => {

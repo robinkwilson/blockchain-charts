@@ -26,9 +26,15 @@ export class FilterButton extends Component {
   }
 
   render() {
-    const {text, activeFilters} = this.props;
+    const { text, activeFilters } = this.props;
     return (
-      <button type="button" onClick={this.toggleFilter} className={activeFilters.indexOf(text) !== -1 ? "btn btn-filter focus active" : "btn btn-filter"} data-toggle="button" aria-pressed="false" autoComplete="off">
+      <button
+        type="button"
+        onClick={this.toggleFilter}
+        className={activeFilters.indexOf(text) !== -1 ? "btn btn-filter focus active" : "btn btn-filter"}
+        data-toggle="button"
+        aria-pressed="false"
+        autoComplete="off">
         {text}
       </button>
     );
