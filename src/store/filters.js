@@ -1,5 +1,5 @@
-const ADD_ACTIVE_FILTER = 'ADD_ACTIVE_FILTER';
-const DELETE_ACTIVE_FILTER = 'DELETE_ACTIVE_FILTER';
+export const ADD_ACTIVE_FILTER = 'ADD_ACTIVE_FILTER';
+export const DELETE_ACTIVE_FILTER = 'DELETE_ACTIVE_FILTER';
 
 const initialState = {
   activeFilters: [],
@@ -11,8 +11,6 @@ const initialState = {
 }
 
 export const addActiveFilter = (filterName) => {
-
-  console.log('+1', filterName);
   return {
     type: ADD_ACTIVE_FILTER,
     filterName
@@ -20,7 +18,6 @@ export const addActiveFilter = (filterName) => {
 }
 
 export const deleteActiveFilter = (filterName) => {
-  console.log('-1');
   return {
     type: DELETE_ACTIVE_FILTER,
     filterName

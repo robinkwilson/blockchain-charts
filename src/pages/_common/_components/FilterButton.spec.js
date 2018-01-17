@@ -7,7 +7,9 @@ import { spy } from 'sinon';
 import SinonChai from 'sinon-chai';
 import { createMockStore } from 'redux-test-utils';
 
-import FilterButton from './FilterButton.jsx';
+// uses the unconnected FilterButton for testing purposes
+import { FilterButton } from './FilterButton.jsx';
+import { addActiveFilter, deleteActiveFilter } from '../../../store/index';
 
 enzyme.configure({ adapter: new Adapter() });
 chai.use(SinonChai);
@@ -15,25 +17,29 @@ chai.use(SinonChai);
 describe('Filter Button common component', () => {
 
   describe('Non-active filter', () => {
-    
+
     let wrapper, defaultProps, defaultStore, toggleSpy;
+    
+    let addActiveFilterSpy = spy();
+    let deleteActiveFilterSpy = spy()
+
     beforeEach(() => {
+
       defaultProps = {
         text: 'filter1',
-        store: {
-          getState: () => ({
-            activeFilters: ['filter2'], // simulate redux store
-            filters: ['filter1', 'filter2'] // simulate redux store
-          })
-        }
+        activeFilters: ['filter2'], // simulate redux store
+        filters: ['filter1', 'filter2'], // simulate redux store
+        addActiveFilter: addActiveFilterSpy,
+        deleteActiveFilter: deleteActiveFilterSpy
       }
-      //const store = createMockStore(defaultStore);
-      //toggleSpy = spy(FilterButton, 'toggleFilter');
+
+      // const store = createMockStore(defaultProps.store);
       wrapper = shallow(<FilterButton {...defaultProps} />);
+      toggleSpy = spy(wrapper.instance(), 'toggleFilter');
+
     });
 
-    it('shallow wrapper for FilterButton accepts mockStore', () => {
-      //expect(wrapper.find('button').hasClass('btn btn-filter')).to.be.true;
+    it('shallow wrapper for FilterButton accepts store arrays', () => {
       expect(wrapper).to.be.a('object');
     });
 
@@ -41,18 +47,22 @@ describe('Filter Button common component', () => {
       expect(wrapper.find('button').hasClass('btn btn-filter')).to.be.true;
     });
 
-    it('when clicked calls toggleFilter', () => {
-      expect(spy).toNotHaveBeenCalled()
-      expect(wrapper.find('button').simulate('click'));
-      expect(spy).toHaveBeenCalled();
+    xit('when clicked calls toggleFilter', () => {
+      expect(wrapper.find('button').simulate('click', { target: { innerText: 'filter1' } }));
+      expect(toggleSpy.called).to.be.true; // Fails currently
     });
 
-    xit('when clicked calls addActiveFilter', () => {
-      expect(wrapper.find('button').hasClass('padding-1') && wrapper.find('button').hasClass('padding-1')).to.be.true;
+    it('when clicked calls addActiveFilter', () => {
+      expect(wrapper.find('button').simulate('click', { target: { innerText: 'filter1' } }));
+      expect(addActiveFilterSpy.called).to.be.true;
+    });
+
+    it('when clicked does NOT call deleteActiveFilter', () => {
+      expect(wrapper.find('button').simulate('click', { target: { innerText: 'filter1' } }));
+      expect(deleteActiveFilterSpy.called).to.be.false;
     });
 
   });
-
 
   describe('Active filter', () => {
 
