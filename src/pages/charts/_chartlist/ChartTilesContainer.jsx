@@ -6,14 +6,18 @@ import ChartTile from './ChartTile.jsx';
 
 export function ChartTilesContainer(props) {
   const {charts, activeFilters} = props;
+  let filtered = [];
+  if (charts) {
+    filtered = charts.filter(chart => hasFilters(chart, activeFilters))
+  }
   return (
     <div className='flex-row container'>
       {
-        charts && charts
-          .filter(chart => hasFilters(chart, activeFilters))
-          .map((chart, id) => {
+        filtered.length > 0 
+        ? filtered.map((chart, id) => {
             return <ChartTile key={id} chart={chart} />;
           })
+        : <p className="center padding-sm">No charts with selected filters.</p>
       }
     </div>
   );

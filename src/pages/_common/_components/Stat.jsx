@@ -7,7 +7,7 @@ export default function Stat(props) {
   return (
     <div className="padding-sm">
       <span className="no-p-m fnt-md">{title}</span>
-      <p className="fnt-lg padding-xsm">{sign + (data.toString().indexOf('.') === -1 ? numberWithCommasNoDecimals(data) : numberWithCommasWithDecimals(data))}</p>
+      <p className="fnt-xxlg padding-xsm text-color-dark-blue">{sign + (data.toString().indexOf('.') === -1 ? numberWithCommasNoDecimals(data) : numberWithCommasWithDecimals(data))}</p>
       <p className="fnt-sm no-p-m">{unit}</p>
     </div>
   );

@@ -59,12 +59,12 @@ export default class PopStats extends Component {
   render() {
     const { printedStats } = this.state;
     return (
-      <div className="container">
+      <div id="pop-stat-container" className="container">
         <div className="row padding-1">
-          <div className="center col-sm-12 col-md-3 col-lg-4">
+          <div className="center col-sm-12 col-md-4 col-lg-4">
             <PrintedStats printedStats={printedStats} />
           </div>
-          <div className="col-sm-12 col-md-9 col-lg-8 padding-sm">
+          <div className="col-sm-12 col-md-8 col-lg-8 padding-sm">
             <ChartQuery />
           </div>
         </div>

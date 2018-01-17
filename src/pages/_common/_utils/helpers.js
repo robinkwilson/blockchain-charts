@@ -19,15 +19,16 @@ export function hasFilters(chart, activeFilters) {
   else return false;
 }
 
-// export function roundToMillions(num) {
-//   const roundToTenThous = Math.round(10000000 * value) / 10000000;
-//   const stringify = roundToTenThous.toString();
-//   const roundToMil = stringify.slice(0, stringify.length - 6);
-//   return roundToMil;
-// }
+export function roundToMillions(num) {
+  //const roundToTenThous = Math.round(10000000 * num) / 10000000;
+  const stringify = num.toString();
+  const roundToMil = stringify.slice(0, stringify.length - 6);
+  return roundToMil;
+}
 
 export default {
   numberWithCommasNoDecimals,
   numberWithCommasWithDecimals,
-  hasFilters
+  hasFilters,
+  roundToMillions
 }

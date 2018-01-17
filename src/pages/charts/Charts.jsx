@@ -13,6 +13,7 @@ export default function Charts() {
         <PopStats />
         <ChartList />
       </div>
+      <div className="sticky-menu footer" height="500px"></div>
     </div>
   );
 }
