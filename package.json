@@ -45,6 +45,7 @@
     "mocha": "^4.1.0",
     "node-sass": "^4.7.2",
     "react-element-to-jsx-string": "^13.1.0",
+    "redux-test-utils": "^0.2.2",
     "sass-loader": "^6.0.6",
     "sinon": "^4.1.6",
     "sinon-chai": "^2.14.0",

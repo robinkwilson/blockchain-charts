@@ -1,5 +1,3 @@
-/* global describe beforeEach afterEach it */
-
 import React from 'react';
 import enzyme, { shallow } from 'enzyme';
 import chai, { expect } from 'chai';
