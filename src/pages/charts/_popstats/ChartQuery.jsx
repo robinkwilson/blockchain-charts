@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import ChartJS from 'react-chartjs-2';
 import moment from 'moment';
 
-import { 
+import {
   numberWithCommasNoDecimals,
-  fetchChartData 
+  fetchChartData,
+  roundToMillions
 } from '../../_common';
 
 export default class ChartQuery extends Component {
@@ -58,7 +59,7 @@ export default class ChartQuery extends Component {
     };
 
     return (
-      <div className={hidden ? 'hidden' : 'parent-h-w'} >
+      <div id="pop-chart" className={hidden ? 'hidden' : 'parent-h-w'} >
         <ChartJS data={chartData} options={opts} type='line' />
       </div>
     );
@@ -114,8 +115,10 @@ const opts = {
         },
         ticks:
           {
-            callback: function (value, index, values) {
-              return '$ ' + numberWithCommasNoDecimals(value);
+            callback: (value, index, values) => {
+              const rounded = roundToMillions(value);
+              const commas = numberWithCommasNoDecimals(rounded);
+              return '$ ' + commas + 'M';
             }
           }
       }

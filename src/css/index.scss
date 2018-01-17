@@ -103,7 +103,7 @@ img {
   width: 100%
 }
 
-.charts:nth-child(odd) {
+.charts:nth-child(even) {
   background: $color-light-blue-grey;
 }
 
@@ -141,3 +141,12 @@ img {
     width: 300px;
   }
 }
+
+#pop-chart {
+  min-width: 320px;
+  min-height: 360px;
+}
+
+@media (min-width: 576px) { 
+  
+ }

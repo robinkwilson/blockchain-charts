@@ -6,7 +6,8 @@ import Heading from './_components/Heading.jsx';
 import {
   numberWithCommasNoDecimals,
   numberWithCommasWithDecimals,
-  hasFilters
+  hasFilters,
+  roundToMillions
 } from './_utils/helpers.js';
 
 import {
@@ -23,6 +24,7 @@ export {
   numberWithCommasNoDecimals,
   numberWithCommasWithDecimals,
   hasFilters,
+  roundToMillions,
   fetchBitcoinData,
   fetchChartData
 }

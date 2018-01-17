@@ -5,11 +5,11 @@ import ChartTilesContainer from './ChartTilesContainer.jsx';
 export default function CategoriesList(props) {
   const { categories, chartLists } = props;
   return (
-    <section className="padding-1 charts">
+    <div>
       {
         categories && categories.map((category, id) => {
           return (
-            <div key={id}>
+            <div key={id} className="charts padding-1" >
               <h2>{`${categoryToTitle(category)}`}</h2>
               <button className="btn btn-primary" type="button" data-toggle="collapse" data-target={`#${category}`} aria-expanded="false" aria-controls={category}>
                 Collapse
@@ -21,7 +21,7 @@ export default function CategoriesList(props) {
           );
         })
       }
-    </section>
+    </div>
   );
 }
 
