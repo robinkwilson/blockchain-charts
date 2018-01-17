@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import ChartQuery from './ChartQuery.jsx';
 import PrintedStats from './PrintedStats.jsx';
-import { 
-  fetchBitcoinData, 
-  fetchChartData 
+import {
+  fetchBitcoinData,
+  fetchChartData
 } from '../../_common';
 
 export default class PopStats extends Component {
@@ -13,30 +13,7 @@ export default class PopStats extends Component {
     super(props);
 
     this.state = {
-      printedStats: [
-        {
-          title: 'BTC Market Price (USD)',
-          unit: 'USD',
-          statName: 'market_price_usd',
-          data: null,
-          hidden: true,
-          sign: '$'
-        },
-        {
-          title: 'Avg Block Size',
-          unit: 'Bytes',
-          statName: 'blocks_size',
-          data: null,
-          hidden: true
-        },
-        {
-          title: 'Confirmed Transactions in Last 24 hours',
-          unit: 'Transactions',
-          statName: 'n_tx',
-          data: null,
-          hidden: true
-        }
-      ]
+      printedStats: printedStats
     };
   }
 
@@ -72,3 +49,28 @@ export default class PopStats extends Component {
     );
   }
 }
+
+const printedStats = [
+  {
+    title: 'BTC Market Price (USD)',
+    unit: 'USD',
+    statName: 'market_price_usd',
+    data: null,
+    hidden: true,
+    sign: '$'
+  },
+  {
+    title: 'Avg Block Size',
+    unit: 'Bytes',
+    statName: 'blocks_size',
+    data: null,
+    hidden: true
+  },
+  {
+    title: 'Confirmed Transactions in Last 24 hours',
+    unit: 'Transactions',
+    statName: 'n_tx',
+    data: null,
+    hidden: true
+  }
+];

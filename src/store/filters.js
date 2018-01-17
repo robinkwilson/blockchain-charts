@@ -1,5 +1,5 @@
-const ADD_ACTIVE_FILTER = 'ADD_ACTIVE_FILTER';
-const DELETE_ACTIVE_FILTER = 'DELETE_ACTIVE_FILTER';
+export const ADD_ACTIVE_FILTER = 'ADD_ACTIVE_FILTER';
+export const DELETE_ACTIVE_FILTER = 'DELETE_ACTIVE_FILTER';
 
 const initialState = {
   activeFilters: [],
@@ -11,8 +11,6 @@ const initialState = {
 }
 
 export const addActiveFilter = (filterName) => {
-
-  console.log('+1', filterName);
   return {
     type: ADD_ACTIVE_FILTER,
     filterName
@@ -20,7 +18,6 @@ export const addActiveFilter = (filterName) => {
 }
 
 export const deleteActiveFilter = (filterName) => {
-  console.log('-1');
   return {
     type: DELETE_ACTIVE_FILTER,
     filterName
@@ -28,7 +25,6 @@ export const deleteActiveFilter = (filterName) => {
 }
 
 export function filtersReducer(state = initialState, action) {
-  console.log('state active filters are ', state.activeFilters);
   switch (action.type) {
     case ADD_ACTIVE_FILTER:
       return Object.assign({}, state, { activeFilters: state.activeFilters.concat(action.filterName) });

@@ -11,7 +11,6 @@ import PageNotFound from './PageNotFound.jsx';
 
 export default class Routes extends Component {
   render() {
-    //console.log(ChartSandbox, PageNotFound, Router, Route)
     return (
       <Router>
         <div>
