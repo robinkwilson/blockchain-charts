@@ -11,9 +11,9 @@ export default function CategoriesList(props) {
           return (
             <div key={id} className="charts padding-1" >
               <h2>{`${categoryToTitle(category)}`}</h2>
-              <button className="btn btn-primary" type="button" data-toggle="collapse" data-target={`#${category}`} aria-expanded="false" aria-controls={category}>
+              {/* <button className="btn btn-primary" type="button" data-toggle="collapse" data-target={`#${category}`} aria-expanded="false" aria-controls={category}>
                 Collapse
-              </button>
+              </button> */}
               <div id={category}>
                 <ChartTilesContainer charts={chartLists[category].charts} />
               </div>
