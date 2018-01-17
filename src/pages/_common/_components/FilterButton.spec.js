@@ -96,10 +96,3 @@ describe('Filter Button common component', () => {
 
   });
 });
-
-
-// component.dive().find("form").simulate("submit");
-// expect(store.isActionDispatched({
-//   type: "showBox/SUBMIT",
-//   searchString: "Site"
-// })).to.be.true;
