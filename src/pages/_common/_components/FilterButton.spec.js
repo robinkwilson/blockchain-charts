@@ -15,35 +15,47 @@ chai.use(SinonChai);
 describe('Filter Button common component', () => {
 
   describe('Non-active filter', () => {
+    
     let wrapper, defaultProps, defaultStore, toggleSpy;
     beforeEach(() => {
       defaultProps = {
         text: 'filter1',
+        store: {
+          getState: () => ({
+            activeFilters: ['filter2'], // simulate redux store
+            filters: ['filter1', 'filter2'] // simulate redux store
+          })
+        }
       }
-      defaultStore = {
-        activeFilters: ['filter2'], // simulate redux store
-        filters: ['filter1', 'filter2'] // simulate redux store
-      }
-      const store = createMockStore(defaultStore);
-      toggleSpy = spy(FilterButton, 'toggleFilter');
-      wrapper = shallow(<FilterButton {...defaultProps} />, store);
+      //const store = createMockStore(defaultStore);
+      //toggleSpy = spy(FilterButton, 'toggleFilter');
+      wrapper = shallow(<FilterButton {...defaultProps} />);
+    });
+
+    it('shallow wrapper for FilterButton accepts mockStore', () => {
+      //expect(wrapper.find('button').hasClass('btn btn-filter')).to.be.true;
+      expect(wrapper).to.be.a('object');
     });
 
     it('render button with non-active classes', () => {
       expect(wrapper.find('button').hasClass('btn btn-filter')).to.be.true;
     });
+
     it('when clicked calls toggleFilter', () => {
       expect(spy).toNotHaveBeenCalled()
       expect(wrapper.find('button').simulate('click'));
       expect(spy).toHaveBeenCalled();
     });
+
     xit('when clicked calls addActiveFilter', () => {
       expect(wrapper.find('button').hasClass('padding-1') && wrapper.find('button').hasClass('padding-1')).to.be.true;
     });
 
   });
 
+
   describe('Active filter', () => {
+
     let wrapper;
     let defaultProps;
     beforeEach(() => {
@@ -58,12 +70,21 @@ describe('Filter Button common component', () => {
     xit('render button with active classes', () => {
       expect(wrapper.find('button')).to.have.lengthOf(1);
     });
+
     xit('when clicked calls toggleFilter', () => {
       expect(wrapper.find('button').text()).to.be.equal('button text');
     });
+
     xit('when clicked calls deleteActiveFilter', () => {
       expect(wrapper.find('button').hasClass('padding-1') && wrapper.find('button').hasClass('padding-1')).to.be.true;
     });
 
   });
 });
+
+
+// component.dive().find("form").simulate("submit");
+// expect(store.isActionDispatched({
+//   type: "showBox/SUBMIT",
+//   searchString: "Site"
+// })).to.be.true;
