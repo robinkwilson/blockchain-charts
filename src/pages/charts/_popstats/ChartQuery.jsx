@@ -60,13 +60,14 @@ export default class ChartQuery extends Component {
 
     return (
       <div id="pop-chart" className={hidden ? 'hidden' : 'parent-h-w'} >
-        <ChartJS data={chartData} options={opts} type='line' />
+        <ChartJS data={chartData} options={options} type='line' />
       </div>
     );
   }
 }
 
-const opts = {
+// Chart options
+const options = {
   responsive: true,
   maintainAspectRatio: false,
   hover: {
