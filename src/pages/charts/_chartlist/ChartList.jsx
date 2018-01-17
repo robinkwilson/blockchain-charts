@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
-import ChartTile from './ChartTile.jsx';
 import FilterList from './FilterList.jsx';
-import CategoriesList from './CategoriesList.jsx';
+import CategoriesList from './_categorieslist/CategoriesList.jsx';
 
 export class ChartList extends Component {
 
@@ -43,7 +41,7 @@ export class ChartList extends Component {
       <div>
         <FilterList />
         <CategoriesList categories={categories} chartLists={chartLists} />
-      </div >
+      </div>
     );
   }
 }

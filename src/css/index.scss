@@ -11,6 +11,13 @@ $color-dark-blue: #004a7c; // Blockchain text
 
 body {
   color: $color-dark-grey;
+  button {
+    border-radius: 0px !important;
+  }
+
+  a:hover {
+    text-decoration: none;
+    }
 }
 
 .bg-primary{
@@ -42,6 +49,14 @@ body {
   }
 }
 
+
+.fnt-xxlg {font-size: 2em;}
+.fnt-xlg {font-size: 1.8em;}
+.fnt-lg {font-size: 1.4em;}
+.fnt-md {font-size: 1em;}
+.fnt-sm {font-size: 0.8em;}
+.fnt-xsm { font-size: 0.6em;}
+
 .card {
   height: 100%;
 }
@@ -63,7 +78,7 @@ body {
   .container > .flex-row{
     justify-content: space-around;
   }
-
+  
   // nav buttons
   button {
     background: none;
@@ -72,7 +87,7 @@ body {
     border-radius: 0;
   }
   button:hover {
-    background: black;
+    background: rgba($color: #000000, $alpha: 0.5);
   }
 }
 
@@ -99,21 +114,6 @@ body {
 .sticky-menu.footer {
   height: 10em;
 }
-.padding-1 {
-  padding: 1em;
-}
-.padding-2 {
-  padding: 2em;
-}
-.padding-sm {
-  padding: 0.5em;
-}
-.padding-xsm {
-  padding: 0.2em;
-}
-.center {
-  text-align: center;
-}
 
 img {
   width: 100%
@@ -123,13 +123,11 @@ img {
   background: $color-light-blue-grey;
 }
 
-
-.fnt-xxlg {font-size: 2em;}
-.fnt-xlg {font-size: 1.8em;}
-.fnt-lg {font-size: 1.4em;}
-.fnt-md {font-size: 1em;}
-.fnt-sm {font-size: 0.8em;}
-.fnt-xsm { font-size: 0.6em;}
+.padding-1 { padding: 1em; }
+.padding-2 { padding: 2em; }
+.padding-sm { padding: 0.5em; }
+.padding-xsm { padding: 0.2em; }
+.center { text-align: center; }
 
 .no-p-m {
   margin:0px;
@@ -152,6 +150,20 @@ img {
   }
   img {
     width: 300px;
+  }
+}
+
+#call-to-action {
+  justify-content: space-around;
+
+  button {
+    background-color: inherit;
+    color: $color-dark-blue;
+    border: 2px solid $color-dark-blue;
+    margin-bottom: 0.5em;
+  }
+  button:hover {
+    background-color: rgba($color: #000000, $alpha: 0.05);
   }
 }
 

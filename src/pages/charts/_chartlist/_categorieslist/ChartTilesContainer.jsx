@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { hasFilters } from '../../_common';
+import { hasFilters } from '../../../_common';
 import ChartTile from './ChartTile.jsx';
 
 export function ChartTilesContainer(props) {

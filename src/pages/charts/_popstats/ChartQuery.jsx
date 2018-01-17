@@ -42,14 +42,14 @@ export default class ChartQuery extends Component {
     const chartData = {
       datasets: [
         {
-          label: 'Estimated Transaction Value (USD)',
+          label: '[ X ] Estimated Transaction Value (USD)',
           fill: false,
           borderColor: 'rgba(75,192,192,1)',
           pointRadius: 0.2,
           data: queryData.transactionValue ? queryData.transactionValue : [],
         },
         {
-          label: 'Miners Revenue (USD)',
+          label: '[ X ] Miners Revenue (USD)',
           fill: false,
           borderColor: 'rgba(80,0,192,1)',
           pointRadius: 0.2,
