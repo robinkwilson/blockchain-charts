@@ -29,8 +29,10 @@ Open 'http://localhost:8080/' in your preferred browser.
 
 ## Running the tests
 
-Use 'npm test'
-
+Use npm command to run tests in the terminal/console.
+```
+npm test'
+```
 
 ## Summary for Context to Design Decisions
 
@@ -55,11 +57,12 @@ Coming from a business background, I first tried to figure out Blockchain's purp
 - Clicking to see each chart could be better
 
 #### My Solutions:
-- Use easily to read units for each chart
-- Filters for getting to the information you want easily
-- Made a chart for a very heated topic in the crypto world -- mining revenue vs transaction value -- and was actually surprised by the difference
+- Use easy-to-read units for each chart
+- Filters for easy searching within the charts for data
+- Popular Stats - added a chart to visualize a heated topic in the crypto world -- mining revenue vs transaction value -- and was actually surprised by the information
+  - Proved my "Chart Sandbox" idea could be compelling
 - Added a Call to Action component to route user to developer APIs or the Chart Sandbox -- as per my Blockchain's page purpose assumption
-- **Not Implemented** Single chart page to render all data clicked on. I dubbed it the "Chart Sandbox." Would have one large chart with buttons at the top (or bottom) that onClick would query and then render the datapoints on the chart. For implementing this, please see "Next Steps" section.
+- **Not Implemented** Single chart page to render all data clicked on. I dubbed it the "Chart Sandbox." Would have one large chart with buttons at the top (or bottom) that onClick would query and then render the datapoints on the chart. For implementing this, please see **"Next Steps"** section.
 
 
 ### Notes for Improvements
@@ -67,8 +70,8 @@ Coming from a business background, I first tried to figure out Blockchain's purp
 #### Coding Improvements
 - Finish unit tests
 - Break out common layouts into _/common/components
-- Integrate history for BrowserRouter
-- Integrate backend to query for chart data and other static information
+- Integrate history for BrowserRouter -- can type url in for navigating pages
+- Integrate backend database to query for chart data and other static information
 - Integrate into Blockchain.info CSS standards
 - Finish Chart Sandbox: 
     - Create buttons with onClick functions that fetchChartData accordingly
