@@ -6,7 +6,7 @@ I chose to build this project similar to the current implementation so your team
 
 I utilized my business and marketing knowledge for the business assumptions and created this project from scratch without using react-create-app.
 
-Thank you for your time reviewing my work! I welcome any and all feedback.
+**Thank you for your time reviewing my work! I welcome any and all feedback.**
 
 
 ### Prerequisites
@@ -36,11 +36,11 @@ Use 'npm test'
 
 Coming from a business background, I first tried to figure out Blockchain's purpose for the charts page and the user demographic.
 
-Business Assumptions for the User:
+#### Business Assumptions for the User:
 1. User is looking for specific data on Blockchain.info for business or personal reasons.
 2. User is saavy in blockchain terminology.
 
-Business Assumptions for Blockchain's main purpose for this page:
+#### Business Assumptions for Blockchain's main purpose for this page:
 1. Establish credibility and brand themselves as the leading source of Bitcoin data.
 2. Display all datasets available.
 3. Encourage the user to use the interactive charts and the developer API's.
@@ -58,8 +58,8 @@ Business Assumptions for Blockchain's main purpose for this page:
 - Use easily to read units for each chart
 - Filters for getting to the information you want easily
 - Made a chart for a very heated topic in the crypto world -- mining revenue vs transaction value -- and was actually surprised by the difference
-- **Not Implemented** Single chart page to render all data clicked on. I dubbed it the "Chart Sandbox." Would have one large chart with buttons at the top (or bottom) that onClick would query and then render the datapoints on the chart. For implementing this, please see "Next Steps" section.
 - Added a Call to Action component to route user to developer APIs or the Chart Sandbox -- as per my Blockchain's page purpose assumption
+- **Not Implemented** Single chart page to render all data clicked on. I dubbed it the "Chart Sandbox." Would have one large chart with buttons at the top (or bottom) that onClick would query and then render the datapoints on the chart. For implementing this, please see "Next Steps" section.
 
 
 ### Notes for Improvements
@@ -76,7 +76,7 @@ Business Assumptions for Blockchain's main purpose for this page:
     - Create spinner while fetching datasets
 
 #### Responsiveness and Feel Improvements
-- Filters attach to 'sticky navbar' -- in Blockchain.info/charts page
+- Filters attach to 'sticky navbar' when scrolling
 - Filter buttons collapse at mobile view width
 - Popular Stats Loading: 
     - Utilize this.state.hidden for both popular statistics and charts to integrates a loading div the same size as the chart. If no data loads, loading screen shrinks to height 0px.
