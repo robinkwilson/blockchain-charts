@@ -31,7 +31,7 @@ Open 'http://localhost:8080/' in your preferred browser.
 
 Use npm command to run tests in the terminal/console.
 ```
-npm test'
+npm test
 ```
 
 ## Summary for Context to Design Decisions
