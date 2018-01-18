@@ -18,7 +18,7 @@ Your machine should be running Node and the package manager npm globally.
 Use the following commands to setup dev environment on your local machine. Please ignore the "Warn unmet dependencies" warning, this is an known issue. 
 
 ```
-git clone https://github.com/robin-k-wilson/codingchallenge-blockchain-charts.git
+git clone https://github.com/robin-k-wilson/blockchain-charts.git
 cd codingchallenge-blockchain-charts
 npm install
 npm run build
