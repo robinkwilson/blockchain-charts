@@ -1,6 +1,6 @@
 # Blockchain.info Charts Reimagined
 
-Recreate Blockchain.info/charts to better organize and display charts to users. 
+Project was to recreate Blockchain.info/charts to better organize and display charts to users.
 
 I chose to build this project similar to the current implementation so your team may choose to integrate these new features easily into the website -- regardless of your interviewing decisions.
 
@@ -39,8 +39,9 @@ npm test
 Coming from a business background, I first tried to figure out Blockchain's purpose for the charts page and the user demographic.
 
 #### Business Assumptions for the User:
-1. User is looking for specific data on Blockchain.info for business or personal reasons.
-2. User is saavy in blockchain terminology.
+1. User is looking for specific data on Blockchain.info it may or may not have.
+2. User is on the page to better understand Bitcoin blockchain for business or personal reasons.
+3. User is saavy in blockchain terminology.
 
 #### Business Assumptions for Blockchain's main purpose for this page:
 1. Establish credibility and brand themselves as the leading source of Bitcoin data.
@@ -52,7 +53,7 @@ Coming from a business background, I first tried to figure out Blockchain's purp
 
 #### Initial Thoughts:
 - Too much text
-- Feeling disorganized -- how do I find the chart I wanted easily?
+- Feeling disorganized -- how do I find the chart I want easily?
 - Popular statistics could be more exciting
 - Clicking to see each chart could be better
 
@@ -85,5 +86,7 @@ Coming from a business background, I first tried to figure out Blockchain's purp
     - Utilize this.state.hidden for both popular statistics and charts to integrates a loading div the same size as the chart. If no data loads, loading screen shrinks to height 0px.
 
 #### Security Improvements
-- Proxy server should not be used
+- Proxy server should not be used for data fetches
 - Secure canvas element that is rendered for the popular statistics chart
+
+**Thank you again for this opportunity.**
