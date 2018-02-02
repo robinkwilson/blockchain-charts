@@ -10,6 +10,7 @@ export function numberWithCommasWithDecimals(num) {
   var parts = num.toString().split(".");
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   parts[1] = parts[1].length < 2 ? parts[1] + '0' : parts[1];
+  parts[1] = parts[1].length > 2 ? parts[1].slice(0,2) : parts[1];
   return parts.join(".");
 }
 
